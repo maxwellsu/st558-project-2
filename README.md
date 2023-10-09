@@ -2,6 +2,8 @@ CFBD API Vignette
 ================
 Maxwell Su
 
+## Prerequisite Packages
+
 For this vignette I will use the following packages:
 
 - `httr`
@@ -12,6 +14,8 @@ For this vignette I will use the following packages:
 Where `httr` and `jsonlite` are used for accessing the API, and
 `tidyverse` is used for processing and presenting the data pulled.
 `maps` is used to aid in plotting coordinates.
+
+## Functions to Pull from API
 
 The first function to write simply takes in the user’s API key and
 processes it in a way that the API can use.
@@ -167,6 +171,8 @@ talent <- function(year = "", apiKey){
 }
 ```
 
+## Exploratory Data Analysis
+
 with the functions defined, it is time to use them to explore the data a
 bit, and perhaps shed a little light onto the odd quirks and footnotes
 of college football.
@@ -187,26 +193,23 @@ bigTenTeams <- bigTenTeams %>%
 bigTenTeams
 ```
 
-<div class="kable-table">
-
-| school         | mascot          | abbreviation | conference | classification | venue                | city            | state |
-|:---------------|:----------------|:-------------|:-----------|:---------------|:---------------------|:----------------|:------|
-| Illinois       | Fighting Illini | ILL          | Big Ten    | fbs            | Memorial Stadium     | Champaign       | IL    |
-| Indiana        | Hoosiers        | IND          | Big Ten    | fbs            | Memorial Stadium     | Bloomington     | IN    |
-| Iowa           | Hawkeyes        | IOWA         | Big Ten    | fbs            | Kinnick Stadium      | Iowa City       | IA    |
-| Maryland       | Terrapins       | MD           | Big Ten    | fbs            | Maryland Stadium     | College Park    | MD    |
-| Michigan       | Wolverines      | MICH         | Big Ten    | fbs            | Michigan Stadium     | Ann Arbor       | MI    |
-| Michigan State | Spartans        | MSU          | Big Ten    | fbs            | Spartan Stadium      | East Lansing    | MI    |
-| Minnesota      | Golden Gophers  | MINN         | Big Ten    | fbs            | TCF Bank Stadium     | Minneapolis     | MN    |
-| Nebraska       | Cornhuskers     | NEB          | Big Ten    | fbs            | Memorial Stadium     | Lincoln         | NE    |
-| Northwestern   | Wildcats        | NW           | Big Ten    | fbs            | Ryan Field           | Evanston        | IL    |
-| Ohio State     | Buckeyes        | OSU          | Big Ten    | fbs            | Ohio Stadium         | Columbus        | OH    |
-| Penn State     | Nittany Lions   | PSU          | Big Ten    | fbs            | Beaver Stadium       | University Park | PA    |
-| Purdue         | Boilermakers    | PUR          | Big Ten    | fbs            | Ross-Ade Stadium     | West Lafayette  | IN    |
-| Rutgers        | Scarlet Knights | RUTG         | Big Ten    | fbs            | SHI Stadium          | Piscataway      | NJ    |
-| Wisconsin      | Badgers         | WIS          | Big Ten    | fbs            | Camp Randall Stadium | Madison         | WI    |
-
-</div>
+    ## # A tibble: 14 × 8
+    ##    school         mascot          abbreviation conference classification venue                city            state
+    ##    <chr>          <chr>           <chr>        <chr>      <chr>          <chr>                <chr>           <chr>
+    ##  1 Illinois       Fighting Illini ILL          Big Ten    fbs            Memorial Stadium     Champaign       IL   
+    ##  2 Indiana        Hoosiers        IND          Big Ten    fbs            Memorial Stadium     Bloomington     IN   
+    ##  3 Iowa           Hawkeyes        IOWA         Big Ten    fbs            Kinnick Stadium      Iowa City       IA   
+    ##  4 Maryland       Terrapins       MD           Big Ten    fbs            Maryland Stadium     College Park    MD   
+    ##  5 Michigan       Wolverines      MICH         Big Ten    fbs            Michigan Stadium     Ann Arbor       MI   
+    ##  6 Michigan State Spartans        MSU          Big Ten    fbs            Spartan Stadium      East Lansing    MI   
+    ##  7 Minnesota      Golden Gophers  MINN         Big Ten    fbs            TCF Bank Stadium     Minneapolis     MN   
+    ##  8 Nebraska       Cornhuskers     NEB          Big Ten    fbs            Memorial Stadium     Lincoln         NE   
+    ##  9 Northwestern   Wildcats        NW           Big Ten    fbs            Ryan Field           Evanston        IL   
+    ## 10 Ohio State     Buckeyes        OSU          Big Ten    fbs            Ohio Stadium         Columbus        OH   
+    ## 11 Penn State     Nittany Lions   PSU          Big Ten    fbs            Beaver Stadium       University Park PA   
+    ## 12 Purdue         Boilermakers    PUR          Big Ten    fbs            Ross-Ade Stadium     West Lafayette  IN   
+    ## 13 Rutgers        Scarlet Knights RUTG         Big Ten    fbs            SHI Stadium          Piscataway      NJ   
+    ## 14 Wisconsin      Badgers         WIS          Big Ten    fbs            Camp Randall Stadium Madison         WI
 
 It’s interesting how the Big Ten actually has 14 teams. The last time
 the number was accurate was in 1989, prior to Penn State joining the
@@ -223,26 +226,23 @@ big12Teams <- big12Teams %>%
 big12Teams
 ```
 
-<div class="kable-table">
-
-| school         | mascot       | abbreviation | conference | classification | venue                                     | city       | state |
-|:---------------|:-------------|:-------------|:-----------|:---------------|:------------------------------------------|:-----------|:------|
-| Baylor         | Bears        | BAY          | Big 12     | fbs            | McLane Stadium                            | Waco       | TX    |
-| BYU            | Cougars      | BYU          | Big 12     | fbs            | LaVell Edwards Stadium                    | Provo      | UT    |
-| Cincinnati     | Bearcats     | CIN          | Big 12     | fbs            | Nippert Stadium                           | Cincinnati | OH    |
-| Houston        | Cougars      | HOU          | Big 12     | fbs            | John O’Quinn Field at TDECU Stadium       | Houston    | TX    |
-| Iowa State     | Cyclones     | ISU          | Big 12     | fbs            | Jack Trice Stadium                        | Ames       | IA    |
-| Kansas         | Jayhawks     | KU           | Big 12     | fbs            | Memorial Stadium                          | Lawrence   | KS    |
-| Kansas State   | Wildcats     | KSU          | Big 12     | fbs            | Bill Snyder Family Football Stadium       | Manhattan  | KS    |
-| Oklahoma       | Sooners      | OKLA         | Big 12     | fbs            | Gaylord Family Oklahoma Memorial Stadium  | Norman     | OK    |
-| Oklahoma State | Cowboys      | OKST         | Big 12     | fbs            | Boone Pickens Stadium                     | Stillwater | OK    |
-| TCU            | Horned Frogs | TCU          | Big 12     | fbs            | Amon G. Carter Stadium                    | Fort Worth | TX    |
-| Texas          | Longhorns    | TEX          | Big 12     | fbs            | Darrell K Royal-Texas Memorial Stadium    | Austin     | TX    |
-| Texas Tech     | Red Raiders  | TTU          | Big 12     | fbs            | Jones AT&T Stadium                        | Lubbock    | TX    |
-| UCF            | Knights      | UCF          | Big 12     | fbs            | Bright House Networks Stadium             | Orlando    | FL    |
-| West Virginia  | Mountaineers | WVU          | Big 12     | fbs            | Mountaineer Field at Milan Puskar Stadium | Morgantown | WV    |
-
-</div>
+    ## # A tibble: 14 × 8
+    ##    school         mascot       abbreviation conference classification venue                                     city       state
+    ##    <chr>          <chr>        <chr>        <chr>      <chr>          <chr>                                     <chr>      <chr>
+    ##  1 Baylor         Bears        BAY          Big 12     fbs            McLane Stadium                            Waco       TX   
+    ##  2 BYU            Cougars      BYU          Big 12     fbs            LaVell Edwards Stadium                    Provo      UT   
+    ##  3 Cincinnati     Bearcats     CIN          Big 12     fbs            Nippert Stadium                           Cincinnati OH   
+    ##  4 Houston        Cougars      HOU          Big 12     fbs            John O'Quinn Field at TDECU Stadium       Houston    TX   
+    ##  5 Iowa State     Cyclones     ISU          Big 12     fbs            Jack Trice Stadium                        Ames       IA   
+    ##  6 Kansas         Jayhawks     KU           Big 12     fbs            Memorial Stadium                          Lawrence   KS   
+    ##  7 Kansas State   Wildcats     KSU          Big 12     fbs            Bill Snyder Family Football Stadium       Manhattan  KS   
+    ##  8 Oklahoma       Sooners      OKLA         Big 12     fbs            Gaylord Family Oklahoma Memorial Stadium  Norman     OK   
+    ##  9 Oklahoma State Cowboys      OKST         Big 12     fbs            Boone Pickens Stadium                     Stillwater OK   
+    ## 10 TCU            Horned Frogs TCU          Big 12     fbs            Amon G. Carter Stadium                    Fort Worth TX   
+    ## 11 Texas          Longhorns    TEX          Big 12     fbs            Darrell K Royal-Texas Memorial Stadium    Austin     TX   
+    ## 12 Texas Tech     Red Raiders  TTU          Big 12     fbs            Jones AT&T Stadium                        Lubbock    TX   
+    ## 13 UCF            Knights      UCF          Big 12     fbs            Bright House Networks Stadium             Orlando    FL   
+    ## 14 West Virginia  Mountaineers WVU          Big 12     fbs            Mountaineer Field at Milan Puskar Stadium Morgantown WV
 
 It seems that the Big 12 is also an inaccurate moniker, though with
 Oklahoma and Texas on their way out in 2024, the name will once again be
@@ -344,21 +344,18 @@ cfpExcitement <- cfpExcitement %>% group_by(team) %>% summarise(mean = mean(exci
 cfpExcitement
 ```
 
-<div class="kable-table">
-
-| team      |     mean |
-|:----------|---------:|
-| 2014 OSU  | 2.935486 |
-| 2015 BAMA | 3.114632 |
-| 2016 CLEM | 3.735677 |
-| 2017 BAMA | 1.717049 |
-| 2018 CLEM | 1.846839 |
-| 2019 LSU  | 2.206913 |
-| 2020 BAMA | 2.072321 |
-| 2021 UGA  | 2.042362 |
-| 2022 UGA  | 2.214376 |
-
-</div>
+    ## # A tibble: 9 × 2
+    ##   team       mean
+    ##   <chr>     <dbl>
+    ## 1 2014 OSU   2.94
+    ## 2 2015 BAMA  3.11
+    ## 3 2016 CLEM  3.74
+    ## 4 2017 BAMA  1.72
+    ## 5 2018 CLEM  1.85
+    ## 6 2019 LSU   2.21
+    ## 7 2020 BAMA  2.07
+    ## 8 2021 UGA   2.04
+    ## 9 2022 UGA   2.21
 
 ``` r
 ggplot(data = cfpExcitement, aes(x = team, y = mean)) + 
@@ -410,17 +407,14 @@ records2017 %>% select(team, total.wins, expectedWins, win.difference) %>%
   arrange(desc(win.difference), desc(total.wins)) %>% head(5)
 ```
 
-<div class="kable-table">
-
-| team         | total.wins | expectedWins | win.difference |
-|:-------------|-----------:|-------------:|---------------:|
-| UCF          |         13 |         11.1 |            1.9 |
-| Akron        |          7 |          5.3 |            1.7 |
-| Troy         |         11 |          9.3 |            1.7 |
-| USC          |         11 |          9.4 |            1.6 |
-| Kansas State |          8 |          6.4 |            1.6 |
-
-</div>
+    ## # A tibble: 5 × 4
+    ##   team         total.wins expectedWins win.difference
+    ##   <chr>             <int>        <dbl>          <dbl>
+    ## 1 UCF                  13         11.1            1.9
+    ## 2 Akron                 7          5.3            1.7
+    ## 3 Troy                 11          9.3            1.7
+    ## 4 USC                  11          9.4            1.6
+    ## 5 Kansas State          8          6.4            1.6
 
 The team that most underperformed their expected win total in 2017 was
 Arkansas State. The top 5 includes a 1-11 Baylor team that was reeling
@@ -431,17 +425,14 @@ records2017 %>% select(team, total.wins, expectedWins, win.difference) %>%
   arrange(win.difference, desc(total.wins)) %>% head(5)
 ```
 
-<div class="kable-table">
-
-| team           | total.wins | expectedWins | win.difference |
-|:---------------|-----------:|-------------:|---------------:|
-| Arkansas State |          7 |          9.4 |           -2.4 |
-| Miami (OH)     |          5 |          7.1 |           -2.1 |
-| Idaho          |          4 |          6.0 |           -2.0 |
-| Baylor         |          1 |          3.0 |           -2.0 |
-| New Mexico     |          3 |          4.7 |           -1.7 |
-
-</div>
+    ## # A tibble: 5 × 4
+    ##   team           total.wins expectedWins win.difference
+    ##   <chr>               <int>        <dbl>          <dbl>
+    ## 1 Arkansas State          7          9.4           -2.4
+    ## 2 Miami (OH)              5          7.1           -2.1
+    ## 3 Idaho                   4          6             -2  
+    ## 4 Baylor                  1          3             -2  
+    ## 5 New Mexico              3          4.7           -1.7
 
 Five teams won just as many games as they were expected to in 2017, the
 most noteworthy being the Wisconsin Badgers. The team finished 12-0,
@@ -456,17 +447,14 @@ records2017 %>% select(team, total.wins, expectedWins, win.difference) %>%
   arrange(abs(win.difference), desc(total.wins)) %>% head(5)
 ```
 
-<div class="kable-table">
-
-| team              | total.wins | expectedWins | win.difference |
-|:------------------|-----------:|-------------:|---------------:|
-| Wisconsin         |         13 |           13 |              0 |
-| Michigan          |          8 |            8 |              0 |
-| Northern Illinois |          8 |            8 |              0 |
-| Cincinnati        |          4 |            4 |              0 |
-| San José State    |          2 |            2 |              0 |
-
-</div>
+    ## # A tibble: 5 × 4
+    ##   team              total.wins expectedWins win.difference
+    ##   <chr>                  <int>        <dbl>          <dbl>
+    ## 1 Wisconsin                 13           13              0
+    ## 2 Michigan                   8            8              0
+    ## 3 Northern Illinois          8            8              0
+    ## 4 Cincinnati                 4            4              0
+    ## 5 San José State             2            2              0
 
 Credit to Wisconsin, however, as their 27-21 loss in the conference
 championship was a much better showing compared to their previous
@@ -615,26 +603,23 @@ bigTenRecords2016 %>% select(team, conference, division, total.wins, total.losse
   arrange(desc(total.wins), total.losses)
 ```
 
-<div class="kable-table">
-
-| team           | conference | division | total.wins | total.losses |
-|:---------------|:-----------|:---------|-----------:|-------------:|
-| Ohio State     | Big Ten    | East     |         11 |            2 |
-| Penn State     | Big Ten    | East     |         11 |            3 |
-| Wisconsin      | Big Ten    | West     |         11 |            3 |
-| Michigan       | Big Ten    | East     |         10 |            3 |
-| Minnesota      | Big Ten    | West     |          9 |            4 |
-| Nebraska       | Big Ten    | West     |          9 |            4 |
-| Iowa           | Big Ten    | West     |          8 |            5 |
-| Northwestern   | Big Ten    | West     |          7 |            6 |
-| Indiana        | Big Ten    | East     |          6 |            7 |
-| Maryland       | Big Ten    | East     |          6 |            7 |
-| Michigan State | Big Ten    | East     |          3 |            9 |
-| Illinois       | Big Ten    | West     |          3 |            9 |
-| Purdue         | Big Ten    | West     |          3 |            9 |
-| Rutgers        | Big Ten    | East     |          2 |           10 |
-
-</div>
+    ## # A tibble: 14 × 5
+    ##    team           conference division total.wins total.losses
+    ##    <chr>          <chr>      <chr>         <int>        <int>
+    ##  1 Ohio State     Big Ten    East             11            2
+    ##  2 Penn State     Big Ten    East             11            3
+    ##  3 Wisconsin      Big Ten    West             11            3
+    ##  4 Michigan       Big Ten    East             10            3
+    ##  5 Minnesota      Big Ten    West              9            4
+    ##  6 Nebraska       Big Ten    West              9            4
+    ##  7 Iowa           Big Ten    West              8            5
+    ##  8 Northwestern   Big Ten    West              7            6
+    ##  9 Indiana        Big Ten    East              6            7
+    ## 10 Maryland       Big Ten    East              6            7
+    ## 11 Michigan State Big Ten    East              3            9
+    ## 12 Illinois       Big Ten    West              3            9
+    ## 13 Purdue         Big Ten    West              3            9
+    ## 14 Rutgers        Big Ten    East              2           10
 
 In 2016, Penn State finished the regular season 11-2 as the Big Ten
 champions. Ohio State finished 11-1, with their only loss coming against
@@ -649,24 +634,21 @@ big12Records2008 %>% select(team, conference, division, total.wins, total.losses
   arrange(desc(total.wins), total.losses)
 ```
 
-<div class="kable-table">
-
-| team           | conference | division | total.wins | total.losses |
-|:---------------|:-----------|:---------|-----------:|-------------:|
-| Texas          | Big 12     | South    |         12 |            1 |
-| Oklahoma       | Big 12     | South    |         12 |            2 |
-| Texas Tech     | Big 12     | South    |         11 |            2 |
-| Missouri       | Big 12     | North    |         10 |            4 |
-| Nebraska       | Big 12     | North    |          9 |            4 |
-| Oklahoma State | Big 12     | South    |          9 |            4 |
-| Kansas         | Big 12     | North    |          8 |            5 |
-| Colorado       | Big 12     | North    |          5 |            7 |
-| Kansas State   | Big 12     | North    |          5 |            7 |
-| Baylor         | Big 12     | South    |          4 |            8 |
-| Texas A&M      | Big 12     | South    |          4 |            8 |
-| Iowa State     | Big 12     | North    |          2 |           10 |
-
-</div>
+    ## # A tibble: 12 × 5
+    ##    team           conference division total.wins total.losses
+    ##    <chr>          <chr>      <chr>         <int>        <int>
+    ##  1 Texas          Big 12     South            12            1
+    ##  2 Oklahoma       Big 12     South            12            2
+    ##  3 Texas Tech     Big 12     South            11            2
+    ##  4 Missouri       Big 12     North            10            4
+    ##  5 Nebraska       Big 12     North             9            4
+    ##  6 Oklahoma State Big 12     South             9            4
+    ##  7 Kansas         Big 12     North             8            5
+    ##  8 Colorado       Big 12     North             5            7
+    ##  9 Kansas State   Big 12     North             5            7
+    ## 10 Baylor         Big 12     South             4            8
+    ## 11 Texas A&M      Big 12     South             4            8
+    ## 12 Iowa State     Big 12     North             2           10
 
 In 2008, the Big 12 South was caught up in a three-way tie, with Texas,
 Oklahoma, and Texas Tech each finishing with an 11-1 record. Texas won
@@ -688,22 +670,19 @@ cfbVenues <- cfbVenues %>% select(name, capacity, city, state, location.x, locat
 cfbVenues %>% select(name, city, state, capacity) %>% arrange(desc(capacity)) %>% head(10)
 ```
 
-<div class="kable-table">
-
-| name                                   | city            | state | capacity |
-|:---------------------------------------|:----------------|:------|---------:|
-| Bristol Motor Speedway                 | Briston         | TN    |   162000 |
-| Michigan Stadium                       | Ann Arbor       | MI    |   107601 |
-| Beaver Stadium                         | University Park | PA    |   106572 |
-| Ohio Stadium                           | Columbus        | OH    |   102780 |
-| Kyle Field                             | College Station | TX    |   102733 |
-| Neyland Stadium                        | Knoxville       | TN    |   102455 |
-| Tiger Stadium                          | Baton Rouge     | LA    |   102321 |
-| Bryant Denny Stadium                   | Tuscaloosa      | AL    |   101821 |
-| Darrell K Royal-Texas Memorial Stadium | Austin          | TX    |   100119 |
-| AT&T Stadium                           | Arlington       | TX    |   100000 |
-
-</div>
+    ## # A tibble: 10 × 4
+    ##    name                                   city            state capacity
+    ##    <chr>                                  <chr>           <chr>    <int>
+    ##  1 Bristol Motor Speedway                 Briston         TN      162000
+    ##  2 Michigan Stadium                       Ann Arbor       MI      107601
+    ##  3 Beaver Stadium                         University Park PA      106572
+    ##  4 Ohio Stadium                           Columbus        OH      102780
+    ##  5 Kyle Field                             College Station TX      102733
+    ##  6 Neyland Stadium                        Knoxville       TN      102455
+    ##  7 Tiger Stadium                          Baton Rouge     LA      102321
+    ##  8 Bryant Denny Stadium                   Tuscaloosa      AL      101821
+    ##  9 Darrell K Royal-Texas Memorial Stadium Austin          TX      100119
+    ## 10 AT&T Stadium                           Arlington       TX      100000
 
 The largest stadium by capacity to ever host a college football game is
 Bristol Motor Speedway (featuring a rather egregious typo in the city).

@@ -8,6 +8,8 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Prerequisite Packages
+
 For this vignette I will use the following packages:
 
 * `httr`
@@ -24,6 +26,9 @@ library(jsonlite)
 library(tidyverse)
 library(maps)
 ```
+
+## Functions to Pull from API
+
 The first function to write simply takes in the user's API key and processes it in a way that the API can use.
 
 ```{r}
@@ -156,6 +161,8 @@ talent <- function(year = "", apiKey){
 }
 ```
 
+## Exploratory Data Analysis
+
 with the functions defined, it is time to use them to explore the data a bit, and perhaps shed a little light onto the odd quirks and footnotes of college football.
 
 But first, to get the API key. I've hidden mine as `apiKey`.
@@ -178,9 +185,9 @@ bigTenTeams <- bigTenTeams %>%
 bigTenTeams
 ```
 
-It's interesting how the Big Ten actually has 14 teams. The last time this number was correct was in 1989, prior to Penn State joining the conference. With Oregon, UCLA, USC, and Washington the conference in 2024, it seems that the conference's commitment to winning football may be greater than its commitment to good counting.
+It's interesting how the Big Ten actually has 14 teams. The last time the number was accurate was in 1989, prior to Penn State joining the conference. With Oregon, UCLA, USC, and Washington the conference in 2024, we're closer to the Big Twenty than we are to the Big Ten.
 
-Perhaps the Big 12 will be better with their numbers.
+Perhaps the Big 12 will be less misleading.
 
 ```{r}
 big12Teams <- teams(conference = "B12", cfbd_api_key)
@@ -190,7 +197,7 @@ big12Teams <- big12Teams %>%
 big12Teams
 ```
 
-It seems that the Big 12 is also false advertising, however with Oklahoma and Texas on their way out in 2024, the name will once again be true. It should be said that 4 of the current teams (BYU, Cincinnati, Houston, and UCF) just joined in 2023, and between 2012 and 2013, there was a period where the Big Ten had 12 teams, and the Big 12 had 10 teams. They did not change their names, however, because the Big 12 has naming right for every number - except for ten.
+It seems that the Big 12 is also an inaccurate moniker, though with Oklahoma and Texas on their way out in 2024, the name will once again be true. It should be said that 4 of the current teams (BYU, Cincinnati, Houston, and UCF) just recently joined in 2023, and during the 2012 and 2013 seasons, the Big Ten had 12 teams, and the Big 12 had 10 teams. They did not (and will not) change their names, however, because the only number that the Big 12 does not own the "Big X" naming rights to is the number 10.
 
 College football is weird.
 
@@ -296,7 +303,7 @@ records2017 %>% select(team, total.wins, expectedWins, win.difference) %>%
 
 Credit to Wisconsin, however, as their 27-21 loss in the conference championship was a much better showing compared to their previous matchup in 2014:
 
-![image](Pictures/Screenshot.png)
+![](Pictures/Screenshot.png)
 
 At least they won the coin toss, I guess.
 
@@ -428,7 +435,7 @@ The remaining stadiums in the top ten include three Big Ten stadiums (Michigan, 
 
 I wanted to plot the locations of each stadium to host a college football game in the continental US:
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, fig.width=10}
 cfbVenues <- cfbVenues %>% filter(!(state %in% c("", "HI", "NSW")))
 us <- map_data(map = "usa")
 ggplot() + 
