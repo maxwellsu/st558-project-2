@@ -188,28 +188,28 @@ Let’s take a look at the Big Ten.
 ``` r
 bigTenTeams <- teams(conference = "B1G", cfbd_api_key)
 bigTenTeams <- bigTenTeams %>% 
-  select(school, mascot, abbreviation, conference, classification, 
+  select(school, mascot, abbreviation, conference, 
          venue = location.name, city = location.city, state = location.state)
 bigTenTeams
 ```
 
-    ## # A tibble: 14 × 8
-    ##    school         mascot          abbreviation conference classification venue                city            state
-    ##    <chr>          <chr>           <chr>        <chr>      <chr>          <chr>                <chr>           <chr>
-    ##  1 Illinois       Fighting Illini ILL          Big Ten    fbs            Memorial Stadium     Champaign       IL   
-    ##  2 Indiana        Hoosiers        IND          Big Ten    fbs            Memorial Stadium     Bloomington     IN   
-    ##  3 Iowa           Hawkeyes        IOWA         Big Ten    fbs            Kinnick Stadium      Iowa City       IA   
-    ##  4 Maryland       Terrapins       MD           Big Ten    fbs            Maryland Stadium     College Park    MD   
-    ##  5 Michigan       Wolverines      MICH         Big Ten    fbs            Michigan Stadium     Ann Arbor       MI   
-    ##  6 Michigan State Spartans        MSU          Big Ten    fbs            Spartan Stadium      East Lansing    MI   
-    ##  7 Minnesota      Golden Gophers  MINN         Big Ten    fbs            TCF Bank Stadium     Minneapolis     MN   
-    ##  8 Nebraska       Cornhuskers     NEB          Big Ten    fbs            Memorial Stadium     Lincoln         NE   
-    ##  9 Northwestern   Wildcats        NW           Big Ten    fbs            Ryan Field           Evanston        IL   
-    ## 10 Ohio State     Buckeyes        OSU          Big Ten    fbs            Ohio Stadium         Columbus        OH   
-    ## 11 Penn State     Nittany Lions   PSU          Big Ten    fbs            Beaver Stadium       University Park PA   
-    ## 12 Purdue         Boilermakers    PUR          Big Ten    fbs            Ross-Ade Stadium     West Lafayette  IN   
-    ## 13 Rutgers        Scarlet Knights RUTG         Big Ten    fbs            SHI Stadium          Piscataway      NJ   
-    ## 14 Wisconsin      Badgers         WIS          Big Ten    fbs            Camp Randall Stadium Madison         WI
+    ## # A tibble: 14 × 7
+    ##    school         mascot          abbreviation conference venue                city            state
+    ##    <chr>          <chr>           <chr>        <chr>      <chr>                <chr>           <chr>
+    ##  1 Illinois       Fighting Illini ILL          Big Ten    Memorial Stadium     Champaign       IL   
+    ##  2 Indiana        Hoosiers        IND          Big Ten    Memorial Stadium     Bloomington     IN   
+    ##  3 Iowa           Hawkeyes        IOWA         Big Ten    Kinnick Stadium      Iowa City       IA   
+    ##  4 Maryland       Terrapins       MD           Big Ten    Maryland Stadium     College Park    MD   
+    ##  5 Michigan       Wolverines      MICH         Big Ten    Michigan Stadium     Ann Arbor       MI   
+    ##  6 Michigan State Spartans        MSU          Big Ten    Spartan Stadium      East Lansing    MI   
+    ##  7 Minnesota      Golden Gophers  MINN         Big Ten    TCF Bank Stadium     Minneapolis     MN   
+    ##  8 Nebraska       Cornhuskers     NEB          Big Ten    Memorial Stadium     Lincoln         NE   
+    ##  9 Northwestern   Wildcats        NW           Big Ten    Ryan Field           Evanston        IL   
+    ## 10 Ohio State     Buckeyes        OSU          Big Ten    Ohio Stadium         Columbus        OH   
+    ## 11 Penn State     Nittany Lions   PSU          Big Ten    Beaver Stadium       University Park PA   
+    ## 12 Purdue         Boilermakers    PUR          Big Ten    Ross-Ade Stadium     West Lafayette  IN   
+    ## 13 Rutgers        Scarlet Knights RUTG         Big Ten    SHI Stadium          Piscataway      NJ   
+    ## 14 Wisconsin      Badgers         WIS          Big Ten    Camp Randall Stadium Madison         WI
 
 It’s interesting how the Big Ten actually has 14 teams. The last time
 the number was accurate was in 1989, prior to Penn State joining the
@@ -221,28 +221,28 @@ Perhaps the Big 12 will be less misleading.
 ``` r
 big12Teams <- teams(conference = "B12", cfbd_api_key)
 big12Teams <- big12Teams %>% 
-  select(school, mascot, abbreviation, conference, classification, 
+  select(school, mascot, abbreviation, conference, 
          venue = location.name, city = location.city, state = location.state)
 big12Teams
 ```
 
-    ## # A tibble: 14 × 8
-    ##    school         mascot       abbreviation conference classification venue                                     city       state
-    ##    <chr>          <chr>        <chr>        <chr>      <chr>          <chr>                                     <chr>      <chr>
-    ##  1 Baylor         Bears        BAY          Big 12     fbs            McLane Stadium                            Waco       TX   
-    ##  2 BYU            Cougars      BYU          Big 12     fbs            LaVell Edwards Stadium                    Provo      UT   
-    ##  3 Cincinnati     Bearcats     CIN          Big 12     fbs            Nippert Stadium                           Cincinnati OH   
-    ##  4 Houston        Cougars      HOU          Big 12     fbs            John O'Quinn Field at TDECU Stadium       Houston    TX   
-    ##  5 Iowa State     Cyclones     ISU          Big 12     fbs            Jack Trice Stadium                        Ames       IA   
-    ##  6 Kansas         Jayhawks     KU           Big 12     fbs            Memorial Stadium                          Lawrence   KS   
-    ##  7 Kansas State   Wildcats     KSU          Big 12     fbs            Bill Snyder Family Football Stadium       Manhattan  KS   
-    ##  8 Oklahoma       Sooners      OKLA         Big 12     fbs            Gaylord Family Oklahoma Memorial Stadium  Norman     OK   
-    ##  9 Oklahoma State Cowboys      OKST         Big 12     fbs            Boone Pickens Stadium                     Stillwater OK   
-    ## 10 TCU            Horned Frogs TCU          Big 12     fbs            Amon G. Carter Stadium                    Fort Worth TX   
-    ## 11 Texas          Longhorns    TEX          Big 12     fbs            Darrell K Royal-Texas Memorial Stadium    Austin     TX   
-    ## 12 Texas Tech     Red Raiders  TTU          Big 12     fbs            Jones AT&T Stadium                        Lubbock    TX   
-    ## 13 UCF            Knights      UCF          Big 12     fbs            Bright House Networks Stadium             Orlando    FL   
-    ## 14 West Virginia  Mountaineers WVU          Big 12     fbs            Mountaineer Field at Milan Puskar Stadium Morgantown WV
+    ## # A tibble: 14 × 7
+    ##    school         mascot       abbreviation conference venue                                     city       state
+    ##    <chr>          <chr>        <chr>        <chr>      <chr>                                     <chr>      <chr>
+    ##  1 Baylor         Bears        BAY          Big 12     McLane Stadium                            Waco       TX   
+    ##  2 BYU            Cougars      BYU          Big 12     LaVell Edwards Stadium                    Provo      UT   
+    ##  3 Cincinnati     Bearcats     CIN          Big 12     Nippert Stadium                           Cincinnati OH   
+    ##  4 Houston        Cougars      HOU          Big 12     John O'Quinn Field at TDECU Stadium       Houston    TX   
+    ##  5 Iowa State     Cyclones     ISU          Big 12     Jack Trice Stadium                        Ames       IA   
+    ##  6 Kansas         Jayhawks     KU           Big 12     Memorial Stadium                          Lawrence   KS   
+    ##  7 Kansas State   Wildcats     KSU          Big 12     Bill Snyder Family Football Stadium       Manhattan  KS   
+    ##  8 Oklahoma       Sooners      OKLA         Big 12     Gaylord Family Oklahoma Memorial Stadium  Norman     OK   
+    ##  9 Oklahoma State Cowboys      OKST         Big 12     Boone Pickens Stadium                     Stillwater OK   
+    ## 10 TCU            Horned Frogs TCU          Big 12     Amon G. Carter Stadium                    Fort Worth TX   
+    ## 11 Texas          Longhorns    TEX          Big 12     Darrell K Royal-Texas Memorial Stadium    Austin     TX   
+    ## 12 Texas Tech     Red Raiders  TTU          Big 12     Jones AT&T Stadium                        Lubbock    TX   
+    ## 13 UCF            Knights      UCF          Big 12     Bright House Networks Stadium             Orlando    FL   
+    ## 14 West Virginia  Mountaineers WVU          Big 12     Mountaineer Field at Milan Puskar Stadium Morgantown WV
 
 It seems that the Big 12 is also an inaccurate moniker, though with
 Oklahoma and Texas on their way out in 2024, the name will once again be
@@ -277,21 +277,22 @@ realignment, and whether they involved a bowl game.
 nebraskaSeasons <- records(team = "Nebraska", apiKey = cfbd_api_key)
 nebraskaSeasons <- nebraskaSeasons %>% select(year, team, conference, total.wins, total.losses) %>%
   filter(year >= 1928, year <= 2022) %>% 
-  mutate(reallignment = case_when(conference == "Big Ten" ~ "After",
-                                  TRUE ~ "Before"),
-         bowl = (total.wins >= total.losses))
+  mutate(reallignment = case_when(conference == "Big Ten" ~ "After Realignment",
+                                  TRUE ~ "Before Realignment"),
+         bowl = (case_when(total.wins >= total.losses ~ "Bowl Eligible",
+                           TRUE ~ "Bowl Ineligible")))
 table(nebraskaSeasons$reallignment, nebraskaSeasons$bowl)
 ```
 
-    ##         
-    ##          FALSE TRUE
-    ##   After      7    5
-    ##   Before    21   62
+    ##                     
+    ##                      Bowl Eligible Bowl Ineligible
+    ##   After Realignment              5               7
+    ##   Before Realignment            62              21
 
 While the post-realignment sample size is much smaller, it does seem
 that Nebraska’s winning ways have not come with them into their new
 conference. While I’m sure the University of Nebraska has put that
-additional money to good use, but it doesn’t seem that it has gone to
+additional money to good use, it doesn’t seem that it has gone to
 playing winning football.
 
 Changing gears to some more successful teams, in 2018 the idea of
@@ -471,7 +472,7 @@ matchup in 2014:
 
 ![](Pictures/Screenshot.png)
 
-At least they won the coin toss, I guess.
+At least they won the coin toss.
 
 ``` r
 ggplot(data = records2017, aes(x = win.difference)) + 

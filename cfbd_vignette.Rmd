@@ -180,7 +180,7 @@ Let's take a look at the Big Ten.
 ```{r}
 bigTenTeams <- teams(conference = "B1G", cfbd_api_key)
 bigTenTeams <- bigTenTeams %>% 
-  select(school, mascot, abbreviation, conference, classification, 
+  select(school, mascot, abbreviation, conference, 
          venue = location.name, city = location.city, state = location.state)
 bigTenTeams
 ```
@@ -192,7 +192,7 @@ Perhaps the Big 12 will be less misleading.
 ```{r}
 big12Teams <- teams(conference = "B12", cfbd_api_key)
 big12Teams <- big12Teams %>% 
-  select(school, mascot, abbreviation, conference, classification, 
+  select(school, mascot, abbreviation, conference, 
          venue = location.name, city = location.city, state = location.state)
 big12Teams
 ```
@@ -211,13 +211,14 @@ I created a contingency table for Nebraska seasons before and after realignment,
 nebraskaSeasons <- records(team = "Nebraska", apiKey = cfbd_api_key)
 nebraskaSeasons <- nebraskaSeasons %>% select(year, team, conference, total.wins, total.losses) %>%
   filter(year >= 1928, year <= 2022) %>% 
-  mutate(reallignment = case_when(conference == "Big Ten" ~ "After",
-                                  TRUE ~ "Before"),
-         bowl = (total.wins >= total.losses))
+  mutate(reallignment = case_when(conference == "Big Ten" ~ "After Realignment",
+                                  TRUE ~ "Before Realignment"),
+         bowl = (case_when(total.wins >= total.losses ~ "Bowl Eligible",
+                           TRUE ~ "Bowl Ineligible")))
 table(nebraskaSeasons$reallignment, nebraskaSeasons$bowl)
 ```
 
-While the post-realignment sample size is much smaller, it does seem that Nebraska's winning ways have not come with them into their new conference. While I'm sure the University of Nebraska has put that additional money to good use, but it doesn't seem that it has gone to playing winning football.
+While the post-realignment sample size is much smaller, it does seem that Nebraska's winning ways have not come with them into their new conference. While I'm sure the University of Nebraska has put that additional money to good use, it doesn't seem that it has gone to playing winning football.
 
 Changing gears to some more successful teams, in 2018 the idea of "joyless murderball" arose to describe the Alabama Crimson Tide's commitment to playing unexciting, suffocating, dominating football. While there may be some truth to the idea that these games are less enjoyable, I'm sure both the fans and coaches alike don't mind not having to worry about their teams.
 
@@ -314,7 +315,7 @@ Credit to Wisconsin, however, as their 27-21 loss in the conference championship
 
 ![](Pictures/Screenshot.png)
 
-At least they won the coin toss, I guess.
+At least they won the coin toss.
 
 ```{r}
 ggplot(data = records2017, aes(x = win.difference)) + 
