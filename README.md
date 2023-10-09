@@ -4,7 +4,10 @@ Maxwell Su
 
 For this vignette I will use the following packages:
 
-*`httr` *`jsonlite` *`tidyverse` *`maps`
+- `httr`
+- `jsonlite`
+- `tidyverse`
+- `maps`
 
 Where `httr` and `jsonlite` are used for accessing the API, and
 `tidyverse` is used for processing and presenting the data pulled.
@@ -535,7 +538,7 @@ ggplot(data = cfpRosters, aes(x = team, y = ratio)) +
 I suppose my theory is somewhat reinforced by Ohio State and LSU having
 higher ratios of in-state athletes than Alabama and Clemson, however I
 was a bit surprised at Georgia’s national championship winning teams
-having at or around 60% of their athletes come from in-state, however.
+having at or around 60% of their athletes come from in-state.
 
 I may have been a bit generous when I referred to Georgia Tech as a
 Power 5 school.
@@ -574,8 +577,8 @@ composite, was not as fortunate. Playoff team Cincinnati(AAC) finished
 performed the worst with high-end talent was USC(PAC), whose 10th best
 team talent-wise only yielded a 4-8 record.
 
-I’ll briefly go through some of the more interesting events in recent
-college football history.
+I’ll now briefly go through some of the more interesting quirks of
+recent college football history.
 
 ``` r
 bigTenRecords2016 <- records(year = 2016, conference = "B1G", apiKey = cfbd_api_key)
