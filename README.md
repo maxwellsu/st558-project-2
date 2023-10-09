@@ -444,8 +444,12 @@ Credit to Wisconsin, however, as their 27-21 loss in the conference
 championship was a much better showing compared to their previous
 matchup in 2014:
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=PVqTie1eo60" frameborder="0" allowfullscreen>
-</iframe>
+<figure>
+<img src="Pictures/Screenshot.png" alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+
+At least they won the coin toss, I guess.
 
 ``` r
 ggplot(data = records2017, aes(x = win.difference)) + 
@@ -560,7 +564,7 @@ winPercentage2021 <- inner_join(winPercentage2021, talent2021, by = join_by(team
 
 ggplot(data = winPercentage2021, aes(x = talent, y = win.percentage)) + 
   geom_point(aes(color = conference)) + 
-  labs(title = "Win percentage vs. 247Sports Talent Composite, 2021 FBS Season",
+  labs(title = "247Sports Talent Composite vs. Win percentage, 2021 FBS Season",
        x = "247 Talent Composite", y = "Win Percentage", color = "Conference")
 ```
 
