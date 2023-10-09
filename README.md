@@ -374,7 +374,7 @@ ggplot(data = cfpExcitement, aes(x = team, y = mean)) +
   theme(legend.position = "none")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 The 2017 Crimson Tide were the best at playing joyless murderball, while
 the 2016 Clemson Tigers played the most exciting games of any of the
@@ -481,7 +481,7 @@ ggplot(data = records2017, aes(x = win.difference)) +
        x = "Actual wins - Expected Wins", y = "Count")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 Plotting a histogram of all of the difference values returns a rather
 bell-shaped distribution. This makes sense, as there is only a limited
@@ -577,7 +577,7 @@ ggplot(data = cfpRosters, aes(x = team, y = ratio)) +
   theme(legend.position = "none")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 I suppose my theory is somewhat reinforced by Ohio State and LSU having
 higher ratios of in-state athletes than Alabama and Clemson, however I
@@ -605,10 +605,10 @@ winPercentage2021 <- inner_join(winPercentage2021, talent2021, by = join_by(team
 ggplot(data = winPercentage2021, aes(x = talent, y = win.percentage)) + 
   geom_point(aes(color = conference)) + 
   labs(title = "247Sports Talent Composite vs. Win percentage, 2021 FBS Season",
-       x = "247 Talent Composite", y = "Win Percentage", color = "Conference")
+       x = "247Sports Talent Composite", y = "Win Percentage", color = "Conference")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
 It should not come as too large a surprise that the two teams that
 competed in the national championship game were those with the highest
@@ -745,7 +745,7 @@ ggplot() +
                     values = c(1, 2, 3, 4))
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
 
 ## Wrap Up
 

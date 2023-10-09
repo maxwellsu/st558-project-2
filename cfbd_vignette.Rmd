@@ -167,10 +167,6 @@ with the functions defined, it is time to use them to explore the data a bit, an
 
 But first, to get the API key. I've hidden mine as `apiKey`.
 
-```{r, echo=FALSE}
-apiKey <- "XXe8SwRJAwU8cB/zcf0guqiUU9tkHiZbjSuGE8ukIeL6HO9Tle6eZ3OaLafAVqqJ"
-```
-
 ```{r}
 cfbd_api_key <- getAPIKey(apiKey)
 ```
@@ -408,7 +404,7 @@ winPercentage2021 <- inner_join(winPercentage2021, talent2021, by = join_by(team
 ggplot(data = winPercentage2021, aes(x = talent, y = win.percentage)) + 
   geom_point(aes(color = conference)) + 
   labs(title = "247Sports Talent Composite vs. Win percentage, 2021 FBS Season",
-       x = "247 Talent Composite", y = "Win Percentage", color = "Conference")
+       x = "247Sports Talent Composite", y = "Win Percentage", color = "Conference")
 ```
 
 It should not come as too large a surprise that the two teams that competed in the national championship game were those with the highest talent composites - Georgia(SEC) and Alabama(SEC). The two teams with the lowest talent composite, Air Force(MW) and Army(Ind), heavily overperformed their talent, a testament to the triple option, although the remaining service academy, Navy(AAC), with the 4th lowest talent composite, was not as fortunate. Playoff team Cincinnati(AAC) finished 12-1 with a middle-of-the-road roster, while the team that perhaps performed the worst with high-end talent was USC(PAC), whose 10th best team talent-wise only yielded a 4-8 record.
