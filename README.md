@@ -315,30 +315,39 @@ that the teams played.
 OSU2014 <- games(year = 2014, team = "Ohio State", apiKey = cfbd_api_key)
 OSU2014 <- OSU2014 %>% mutate(team = "2014 OSU", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 BAMA2015 <- games(year = 2015, team = "Alabama", apiKey = cfbd_api_key)
 BAMA2015 <- BAMA2015 %>% mutate(team = "2015 BAMA", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 CLEM2016 <- games(year = 2016, team = "Clemson", apiKey = cfbd_api_key)
 CLEM2016 <- CLEM2016 %>% mutate(team = "2016 CLEM", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 BAMA2017 <- games(year = 2017, team = "Alabama", apiKey = cfbd_api_key)
 BAMA2017 <- BAMA2017 %>% mutate(team = "2017 BAMA", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 CLEM2018 <- games(year = 2018, team = "Clemson", apiKey = cfbd_api_key)
 CLEM2018 <- CLEM2018 %>% mutate(team = "2018 CLEM", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 LSU2019 <- games(year = 2019, team = "LSU", apiKey = cfbd_api_key)
 LSU2019 <- LSU2019 %>% mutate(team = "2019 LSU", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 BAMA2020 <- games(year = 2020, team = "Alabama", apiKey = cfbd_api_key)
 BAMA2020 <- BAMA2020 %>% mutate(team = "2020 BAMA", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 UGA2021 <- games(year = 2021, team = "Georgia", apiKey = cfbd_api_key)
 UGA2021 <- UGA2021 %>% mutate(team = "2021 UGA", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 UGA2022 <- games(year = 2022, team = "Georgia", apiKey = cfbd_api_key)
 UGA2022 <- UGA2022 %>% mutate(team = "2022 UGA", excitement_index = as.numeric(excitement_index)) %>%
   select(team, excitement_index)
+
 cfpExcitement <- rbind(OSU2014, BAMA2015, CLEM2016, BAMA2017, CLEM2018, LSU2019, BAMA2020, UGA2021, UGA2022)
 cfpExcitement <- cfpExcitement %>% group_by(team) %>% summarise(mean = mean(excitement_index))
 cfpExcitement
@@ -543,6 +552,23 @@ cfpRosters <- rbind(OSU2014Roster, BAMA2015Roster, CLEM2016Roster, BAMA2017Roste
 cfpRosters <- cfpRosters %>% group_by(team) %>% mutate(team_state = (team_state == home_state)) %>%
   summarise(ratio = sum(team_state) / n())
 
+cfpRosters
+```
+
+    ## # A tibble: 9 × 2
+    ##   team            ratio
+    ##   <chr>           <dbl>
+    ## 1 2014 Ohio State 0.485
+    ## 2 2015 Alabama    0.254
+    ## 3 2016 Clemson    0.381
+    ## 4 2017 Alabama    0.337
+    ## 5 2018 Clemson    0.429
+    ## 6 2019 LSU        0.554
+    ## 7 2020 Alabama    0.363
+    ## 8 2021 Georgia    0.595
+    ## 9 2022 Georgia    0.6
+
+``` r
 ggplot(data = cfpRosters, aes(x = team, y = ratio)) + 
   geom_bar(stat = "identity", aes(x = reorder(team, ratio), fill = team)) + 
   coord_flip() + 
@@ -719,3 +745,14 @@ ggplot() +
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+
+## Wrap Up
+
+To close, I’ve written functions to access various endpoints of the
+College Football Database, and I’ve used them to pull data and conduct
+various analyses. I hope to have shed some light on the more interesting
+factoids and tidbits of what makes this magically strange sport what it
+is.
+
+It is my hope that the reader of this would learn something about
+college football, as well as something about interacting with APIs.
