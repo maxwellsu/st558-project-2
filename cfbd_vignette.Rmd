@@ -296,7 +296,9 @@ records2017 %>% select(team, total.wins, expectedWins, win.difference) %>%
 
 Credit to Wisconsin, however, as their 27-21 loss in the conference championship was a much better showing compared to their previous matchup in 2014:
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=PVqTie1eo60" frameborder="0" allowfullscreen></iframe>
+![image](Pictures/Screenshot.png)
+
+At least they won the coin toss, I guess.
 
 ```{r}
 ggplot(data = records2017, aes(x = win.difference)) + 
